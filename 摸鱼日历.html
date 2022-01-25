@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摸鱼日历</title>
+    <link rel="icon" href="images/icon_fish.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: #810100;
+        }
+
+        .box {
+            width: 650px;
+            height: 873px;
+            margin: auto;
+            background-image: url(images/moyu_bg.jpg);
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-attachment: scroll;
+        }
+
+        .header {
+            padding: 20px 30px 0px 30px;
+            font-family: 'KaiTi';
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .one {
+            margin-left: 90px;
+            margin-right: 30px;
+        }
+
+        .neck {
+            margin: 10px 30px;
+        }
+
+        .neck div {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .day {
+            width: 120px;
+            height: 120px;
+            border: 7px solid #810100;
+            font-size: 23px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .date {
+            font-size: 50px;
+        }
+
+        .week {
+            margin: auto;
+            width: 60px;
+            height: 90px;
+            border-top: 35px solid #810100;
+            border-right: 7px solid #810100;
+            border-bottom: 7px solid #810100;
+            border-left: 7px solid #810100;
+            text-align: center;
+            font-size: 23px;
+            font-weight: 700;
+
+        }
+
+        .theme {
+            width: 100%;
+            height: 100%;
+            padding: 7px;
+            background-color: #810100;
+            text-align: center;
+            margin: auto;
+        }
+
+        .neck .theme h1 {
+            font-size: 65px;
+            color: #F9EAD5;
+        }
+
+        .neck h5 {
+            font-size: 25px;
+            margin: auto;
+            font-style: italic;
+        }
+
+        .shoulder {
+            margin: 10px 30px;
+        }
+
+        .tucao {
+            width: 275px;
+            height: 100%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .tucao span {
+            background-color: #810100;
+            color: #F9EAD5;
+            font-family: 'YouYuan', 'Microsoft YaHei';
+            display: inline-block;
+            text-align: center;
+            font-size: 55px;
+            padding: 5px;
+            border-radius: 15px;
+        }
+
+        .poem {
+            width: 265px;
+            margin-top: 8px;
+            border: 5px solid #810100;
+            text-align: center;
+            padding: 15px 0px;
+            font-family: 'HeiTi';
+        }
+
+        .poem p {
+            font-weight: 700;
+            font-size: 25px;
+        }
+
+        .poem ul li {
+            list-style: none;
+            margin: 15px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .holiday {
+            margin: 0;
+            height: 385px;
+            width: 300px;
+            display: inline-block;
+            border: 5px solid #810100;
+            text-align: left;
+            padding-bottom: 15px;
+            font-family: 'HeiTi';
+            font-size: 18px;
+            vertical-align: bottom;
+        }
+
+        .holiday h4 {
+            margin: 20px 0px 15px 15px;
+        }
+
+        .holiday p {
+            margin: 0px 0px 5px 15px;
+        }
+
+        .jiaqi {
+            margin: 0px 0px 10px 15px;
+        }
+
+        .jiaqi div {
+            margin: 5px 0px;
+        }
+
+        .jiaqi span {
+            font-size: 25px;
+            font-weight: 700;
+            margin: 0px 5px;
+        }
+
+        .butt {
+            height: 90px;
+            margin: 0px 30px;
+            vertical-align: middle;
+        }
+
+        .left {
+            display: inline-block;
+        }
+
+        .myy {
+            display: inline-block;
+            border: 4px solid #810100;
+        }
+
+        .myy .fish {
+            text-align: center;
+        }
+
+        .myy .word {
+            display: inline-block;
+            background-color: #810100;
+        }
+
+        .myy .word span {
+            color: #F9EAD5;
+            font-family: 'KaiTi';
+        }
+
+        .yi {
+            font-weight: 700;
+            font-size: 25px;
+        }
+
+        .myy1 {
+            display: inline-block;
+            width: 240px;
+            height: 82px;
+            border: 4px solid #810100;
+            vertical-align: top;
+            padding-left: 5px;
+        }
+
+        .myy1 p {
+            margin: 0px 0px 5px 0px;
+            font-size: 16px;
+        }
+
+        .right {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .myjs {
+            height: 82px;
+            display: inline-block;
+            border: 4px solid #810100;
+        }
+
+        .jstime {
+            color: #F9EAD5;
+            font-family: 'KaiTi';
+            font-size: 18px;
+            background-color: #810100;
+        }
+
+        .fishes {
+            text-align: center;
+        }
+
+        .myjs1 {
+            vertical-align: top;
+            display: inline-block;
+            padding: 10px;
+
+        }
+
+        .myjs1 p {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0px 0px 15px 0px;
+        }
+
+        .feet {
+            margin: 5px 30px;
+        }
+
+        .talk {
+            display: inline-block;
+            width: 317px;
+            height: 107px;
+            border: 4px solid #810100;
+            padding: 10px;
+        }
+
+        .talk p {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .talk span {
+            margin-top: 10px;
+            display: block;
+            text-align: end;
+        }
+
+        .tv {
+            vertical-align: top;
+            display: inline-block;
+            width: 240px;
+            height: 135px;
+            background: url(images/tv.png) center top scroll no-repeat;
+        }
+
+        .tv1 {
+            margin: 12px 0px 0px 10px;
+            text-align: center;
+            width: 193px;
+            height: 97px;
+        }
+
+        .tv1 h1 {
+            font-size: 40px;
+        }
+
+        .tv1 p {
+            font-weight: 700;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="header">
+            <span>[摸鱼日历]</span>
+            <span class="one">公众号:摸鱼人日历</span>
+            <span>摸鱼一时爽，一直摸鱼……</span>
+            <hr color="#810100">
+        </div>
+        <div class="neck">
+            <div class="day">
+                <div class="yearmonth" id="nianyue"></div>
+                <hr size="7px" color="#810100">
+                <div class="date" id="ri"></div>
+            </div>
+            <div class="week" id="xingqi"></div>
+            <div>
+                <div class="theme">
+                    <h1>摸鱼人日历</h1>
+                </div>
+                <h5>春节来临之际 必是无心工作之时</h5>
+            </div>
+        </div>
+        <div class="shoulder">
+            <div class="tucao">
+                <span>摸</span>
+                <span>鱼</span>
+                <span>吐</span>
+                <span>槽</span>
+                <div class="poem">
+                    <p>摸鱼打油诗</p>
+                    <ul>
+                        <li>周一不摸鱼，脑子有问题；</li>
+                        <li>周二不摸鱼，上班没心情；</li>
+                        <li>周三不摸鱼，你是头傻驴；</li>
+                        <li>周四不摸鱼，谁请肯德基；</li>
+                        <li>周五不摸鱼，浪费好心情；</li>
+                        <li>周六不摸鱼，活着真多余；</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="holiday">
+                <h4>·工作假期倒计时·</h4>
+                <p>早安，摸鱼人!</p>
+                <p>工作再辛苦，也要记得摸鱼嗷!</p>
+                <div class="jiaqi">
+                    <div id="benzhouwu">距本周五还有<span id="zhouwu"></span>天</div>
+                    <div>距离春节假期还有<span id="chunjie"></span>天</div>
+                    <div>距清明节假期还有<span id="qingming"></span>天</div>
+                    <div>距劳动节假期还有<span id="laodong"></span>天</div>
+                    <div>距端午节假期还有<span id="duanwu"></span>天</div>
+                </div>
+                <p>下午的时候来杯咖啡提提神，<br>时间很快就过去啦!</p>
+            </div>
+        </div>
+        <div class="butt">
+            <div class="left">
+                <div class="myy">
+                    <div class="fish"><img src="images/icon_fish.png" title="摸鱼宜"></div>
+                    <div class="word"><span>摸鱼</span>
+                        <span class="yi">宜</span>
+                    </div>
+                </div>
+                <div class="myy1">
+                    <p>电影摸鱼、刷站摸鱼、抽烟摸鱼、</p>
+                    <p>组团摸鱼、睡觉摸鱼、聊天摸鱼、</p>
+                    <p>外出摸鱼……</p>
+                </div>
+            </div>
+            <div class="right">
+                <div class="myjs">
+                    <div class="jstime">摸鱼吉时</div>
+                    <div class="fishes"><img src="images/fish_icon.png" title="摸鱼吉时"></div>
+                </div>
+                <div class="myjs1">
+                    <p>未时 13:00-15:00</p>
+                    <p>申时 15:00-17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="feet">
+            <div class="talk">
+                <p>年轻的时候千万不要因为没钱而绝望，因为你要知道，你以后没钱的日子还很多。</p>
+                <span>---摸鱼人:打渔人</span>
+            </div>
+            <div class="tv">
+                <div class="tv1">
+                    <h1>感谢收看</h1>
+                    <p>今天也要记得摸鱼哦</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var now = new Date();
+    var nian = now.getFullYear();
+    var yue = now.getMonth() + 1;
+    var ri = now.getDate();
+    document.getElementById("nianyue").innerText = nian + "年" + yue + "月";
+    document.getElementById("ri").innerText = ri;
+    var week = "星\n期\n";
+    var xingqi = now.getDay();
+    switch (xingqi) {
+        case 0:
+            week += "日";
+            break;
+        case 1:
+            week += "一";
+            break;
+        case 2:
+            week += "二";
+            break;
+        case 3:
+            week += "三";
+            break;
+        case 4:
+            week += "四";
+            break;
+        case 5:
+            week += "五";
+            break;
+        case 6:
+            week += "六";
+            break;
+    }
+    document.getElementById("xingqi").innerText = week;
+    var today = now.getTime();
+    var chunjie = new Date('2022-2-1');
+    var qingming = new Date('2022-4-5');
+    var laodong = new Date('2022-5-1');
+    var duanwu = new Date('2022-6-3');
+    var lizhouwu = 5 - xingqi;
+    var lichunjie = (chunjie.getTime() - today) / (24 * 60 * 60 * 1000);
+    var liqingming = (qingming.getTime() - today) / (24 * 60 * 60 * 1000);
+    var lilaodong = (laodong.getTime() - today) / (24 * 60 * 60 * 1000);
+    var liduanwu = (duanwu.getTime() - today) / (24 * 60 * 60 * 1000);
+    document.getElementById("zhouwu").innerText = parseInt(lizhouwu);
+    document.getElementById("chunjie").innerText = parseInt(lichunjie);
+    document.getElementById("qingming").innerText = parseInt(liqingming);
+    document.getElementById("laodong").innerText = parseInt(lilaodong);
+    document.getElementById("duanwu").innerText = parseInt(liduanwu);
+    if(lizhouwu <= 0){
+        document.getElementById("benzhouwu").innerText = null;
+    }
+</script>
+
+</html>
