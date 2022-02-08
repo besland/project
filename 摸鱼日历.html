@@ -348,10 +348,10 @@
                 <p>工作再辛苦，也要记得摸鱼嗷!</p>
                 <div class="jiaqi">
                     <div id="benzhouwu">距本周五还有<span id="zhouwu"></span>天</div>
-                    <div>距离春节假期还有<span id="chunjie"></span>天</div>
-                    <div>距清明节假期还有<span id="qingming"></span>天</div>
-                    <div>距劳动节假期还有<span id="laodong"></span>天</div>
-                    <div>距端午节假期还有<span id="duanwu"></span>天</div>
+                    <div id="benchunjie">距离春节假期还有<span id="chunjie"></span>天</div>
+                    <div id="benqingming">距清明节假期还有<span id="qingming"></span>天</div>
+                    <div id="benlaodong">距劳动节假期还有<span id="laodong"></span>天</div>
+                    <div id="benduanwu">距端午节假期还有<span id="duanwu"></span>天</div>
                 </div>
                 <p>下午的时候来杯咖啡提提神，<br>时间很快就过去啦!</p>
             </div>
@@ -445,6 +445,18 @@
     document.getElementById("duanwu").innerText = parseInt(liduanwu);
     if(lizhouwu <= 0){
         document.getElementById("benzhouwu").innerText = null;
+    }
+    if(lichunjie <= 0){
+        document.getElementById("benchunjie").innerText = null;
+    }
+    if(liqingming <= 0){
+        document.getElementById("benqingming").innerText = null;
+    }
+    if(lilaodong <= 0){
+        document.getElementById("benlaodong").innerText = null;
+    }
+    if(liduanwu <= 0){
+        document.getElementById("benduanwu").innerText = null;
     }
 </script>
 
