@@ -12,24 +12,26 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <div class="nav">
-        <ul>
-            <li><a href="javascript:;" @click="page1">电子合格证
-                    <div class="line"> </div>
-                </a></li>
-            <li><a href="javascript:;" @click="page2">企业展示
-                    <div class="line"> </div>
-                </a></li>
-            <li><a href="javascript:;" @click="page3">生产信息
-                    <div class="line"> </div>
-                </a></li>
-            <li><a href="javascript:;" @click="page4">监管信息
-                    <div class="line"> </div>
-                </a></li>
-            <li><a href="javascript:;" @click="page5">检测信息
-                    <div class="line"> </div>
-                </a></li>
-        </ul>
+    <div class="slipNav">
+        <nav>
+            <ul>
+                <li><a href="javascript:;" @click="page1">电子合格证
+                        <div class="line"> </div>
+                    </a></li>
+                <li><a href="javascript:;" @click="page2">企业展示
+                        <div class="line"> </div>
+                    </a></li>
+                <li><a href="javascript:;" @click="page3">生产信息
+                        <div class="line"> </div>
+                    </a></li>
+                <li><a href="javascript:;" @click="page4">监管信息
+                        <div class="line"> </div>
+                    </a></li>
+                <li><a href="javascript:;" @click="page5">检测信息
+                        <div class="line"> </div>
+                    </a></li>
+            </ul>
+        </nav>
     </div>
     <div class="center">
         <iframe src="电子合格证.html" style="width: 100%;height: 949px; border:0;" scrolling="no" id="webpage"></iframe>
@@ -38,7 +40,7 @@
 </body>
 <script>
     var nav = new Vue({
-        el: ".nav",
+        el: ".slipNav",
         data: {
         },
         methods: {

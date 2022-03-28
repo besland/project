@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-touch-fullscreen" content="no" />
     <title>企业展示</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="xingxi">
         <div class="info">
@@ -35,7 +34,8 @@
             </div>
             <div class="info1">
                 <span>联系方式</span>
-                <span class="info2"><a href="">18915146018</a></span>
+                <span class="info2"><a href="javascript:;" onclick="copyUrl()">18915146018</a><span
+                        class="copytxt"></span></span>
             </div>
             <div class="info1">
                 <span>联系地址</span>
@@ -45,11 +45,66 @@
         <div class="info">
             <h4>产地地图</h4>
             <hr style="border: 1px solid #F0F0F0;">
-            <div class="map">
-
+            <div id="allmap">
             </div>
-            <input type="button" value="到这去" class="btn">
+            <div class="justgo"><a href="http://api.map.baidu.com/geocoder?address=淮阴区王家营街道沈渡村&output=html&src=webapp.baidu.openAPIdemo"
+                target="_blank">到这去<img src="img/dingwei.png"></a></div>
         </div>
     </div>
 </body>
+<script type="text/javascript" src="http://api.map.baidu.com/api?type=webgl&v=1.0&ak=8fNXxLk3fxaV5HenHFUMP7EVqu8Kg7P4">
+</script>
+<script>
+    function copyUrl() {
+        document.getElementsByClassName("copytxt")[0].innerText = "18915146018";
+        const range = document.createRange();
+        range.selectNode(document.querySelector(".copytxt"));
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('Copy');
+        alert("已复制");
+    }
+
+    var map = new BMapGL.Map('allmap');
+    map.centerAndZoom(new BMapGL.Point(118.982753, 33.617596), 19);
+    var locationControl = new BMapGL.LocationControl({
+        anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+        offset: new BMapGL.Size(20, 20)
+    });
+    map.addControl(locationControl);
+    locationControl.addEventListener("locationSuccess", function (e) {
+        var address = '';
+        address += e.addressComponent.province;
+        address += e.addressComponent.city;
+        address += e.addressComponent.district;
+        address += e.addressComponent.street;
+        address += e.addressComponent.streetNumber;
+        alert("当前定位地址为：" + address);
+    });
+    locationControl.addEventListener("locationError", function (e) {
+        alert(e.message);
+    });
+
+    var marker = new BMapGL.Marker(new BMapGL.Point(118.982753, 33.617596));
+    map.addOverlay(marker);
+    var opts = {
+        position: new BMapGL.Point(118.982753, 33.617596),
+        offset: new BMapGL.Size(15, -30)
+    };
+
+    var label = new BMapGL.Label('淮安明发珍禽养殖有限公司', opts);
+    label.setStyle({
+        color: 'red',
+        borderWidth: '2px',
+        borderColor: 'red',
+        padding: '3px',
+        fontSize: '12px',
+        height: '20px',
+        lineHeight: '20px',
+        fontWeight: '700'
+    });
+    map.addOverlay(label);
+</script>
+
 </html>
