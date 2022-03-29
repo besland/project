@@ -72,11 +72,19 @@
                     联系方式:&nbsp;&nbsp;18915146018
                 </div>
                 <div class="date">
-                    开具日期:&nbsp;&nbsp;2021年11月29日
+                    开具日期:&nbsp;&nbsp;<span id="nian"></span>年<span id="yue"></span>月<span id="ri"></span>日
                 </div>
             </div>
         </div>
     </div>
 </body>
-
+<script>
+    var now = new Date();
+    var nian = now.getFullYear();
+    var yue = now.getMonth() + 1;
+    var ri = now.getDate();
+    document.getElementById("nian").innerText = nian;
+    document.getElementById("yue").innerText = yue;
+    document.getElementById("ri").innerText = ri;
+</script>
 </html>
