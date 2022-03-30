@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="Content-Type" content="text/html"/>
+    <meta http-equiv="Content-Type" content="text/html" />
     <title>电子合格证</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="qrcodejs/jquery.min.js"></script>
 </head>
 
 <body>
@@ -72,19 +73,26 @@
                     联系方式:&nbsp;&nbsp;18915146018
                 </div>
                 <div class="date">
-                    开具日期:&nbsp;&nbsp;<span id="nian"></span>年<span id="yue"></span>月<span id="ri"></span>日
+                    <span>开具日期:&nbsp;&nbsp;</span>
+                    <span id="nian"></span>
+                    <span id="yue"></span>
+                    <span id="ri"></span>
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script>
-    var now = new Date();
-    var nian = now.getFullYear();
-    var yue = now.getMonth() + 1;
-    var ri = now.getDate();
-    document.getElementById("nian").innerText = nian;
-    document.getElementById("yue").innerText = yue;
-    document.getElementById("ri").innerText = ri;
+    var time = parent.location.search.substr(1);
+    var arr = time.split('=');
+    var shijianchuo = parseInt(arr[1]);
+    var newTime = new Date(shijianchuo);
+    var newYear = newTime.getFullYear();
+    var newMonth = newTime.getMonth() + 1;
+    var newDate = newTime.getDate();
+    document.getElementById("nian").innerHTML = newYear + "年";
+    document.getElementById("yue").innerHTML = newMonth + "月";
+    document.getElementById("ri").innerHTML = newDate + "日";
 </script>
+
 </html>

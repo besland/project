@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码生成页面</title>
+    <script type="text/javascript" src="qrcodejs/qrcode.min.js"></script>
+    <style>
+        #qrcode {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn {
+            width: 150px;
+            height: 40px;
+            background-color: #31BC7B;
+            border: none;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -300%);
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .btn:hover {
+            color: #B9ED83;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="qrcode"></div>
+    <button class="btn" onclick="show()">生成二维码</button>
+</body>
+<script>
+    var isClick = false;
+    function show() {
+        if (isClick) {
+
+        }
+        else {
+            var time = new Date().getTime();
+            var wangzhi = 'http://81.69.57.216/mingfa.html?time='+time;
+            let qrcodeEl = document.getElementById('qrcode');
+            let qrcode = new QRCode(qrcodeEl, {
+                text: wangzhi,
+                width: 150,
+                height: 150,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            isClick = true;
+            
+            // window.location = 'http://81.69.57.216/mingfa.html?time='+time;
+        }
+    }
+</script>
+
+</html>
